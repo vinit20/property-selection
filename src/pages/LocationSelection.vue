@@ -60,6 +60,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .form-container {
   width: 30%;
