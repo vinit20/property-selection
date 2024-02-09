@@ -49,7 +49,6 @@ export default {
   padding: 40px 60px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
   position: relative;
 }
 h2 {

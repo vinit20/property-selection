@@ -69,7 +69,7 @@ export default {
   margin-top: 20px;
 }
 button {
-  padding: 16px 50px;
+  padding: 12px 50px;
   width: 100%;
   background-color: #007bff;
   color: #fff;

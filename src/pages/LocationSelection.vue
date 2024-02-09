@@ -53,7 +53,6 @@ h2 {
   padding: 30px 60px 60px 60px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
 }
 @media (max-width: 767px) {
   .form-container {

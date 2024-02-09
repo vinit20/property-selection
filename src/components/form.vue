@@ -69,7 +69,7 @@ export default {
 <style scoped>
 input {
   width: 100%;
-  padding: 16px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -92,7 +92,7 @@ input {
 
 .select-dropdown {
   width: 100%;
-  padding: 16px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -104,14 +104,11 @@ input {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-.option {
-  padding: 16px !important;
-}
 
 .btn {
   display: block;
   width: 100%;
-  padding: 16px;
+  padding: 12px;
   background-color: #007bff;
   color: #fff;
   border: none;
