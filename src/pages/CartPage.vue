@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Form from "../components/form.vue";
+import Form from "../components/FormPage.vue";
 export default {
   name: "cart-page",
   data() {

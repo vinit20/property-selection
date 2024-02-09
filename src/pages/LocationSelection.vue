@@ -12,7 +12,7 @@
 <script>
 import Modal from "../components/Modal.vue";
 import PropertySelection from "../components/PropertySelection.vue";
-import Form from "../components/form.vue";
+import Form from "../components/FormPage.vue";
 import STATE_DATA from "../utils/state-data.json";
 export default {
   name: "location-selection",
