@@ -87,10 +87,11 @@ h2 {
   pointer-events: none; /* Prevent clicking on blurred elements */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .cart-page-main {
-    width: auto;
+    margin: 20px;
     padding: 20px;
+    width: 100%;
   }
   .submit-form {
     width: 70%;
