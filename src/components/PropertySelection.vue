@@ -1,12 +1,12 @@
 <template>
   <div class="property-selection-main">
+    <!-- using the loop here for showing the properties according to the location -->
     <div class="property" v-for="state in selectedLocation" :key="state.id">
       <div v-for="(property, index) in state.properties" :key="index">
         <div class="inputs">
           <div>
             <input
               type="checkbox"
-              @change="propertySelect"
               v-model="selectProperty"
               :value="property"
             />
@@ -14,7 +14,12 @@
           </div>
         </div>
       </div>
-      <div v-if="selectProperty.length" class="selected-property">Selected Properties: <span><b>{{ selectProperty.join(', ') }}</b></span></div>
+      <div v-if="selectProperty.length" class="selected-property">
+        Selected Properties:
+        <span>
+          <b>{{ selectProperty.join(', ') }}</b>
+        </span>
+      </div>
     </div>
     <div class="button" v-if="selectedLocation.length">
       <button
@@ -36,10 +41,8 @@ export default {
     };
   },
   methods: {
-    propertySelect() {
-      console.log(this.selectProperty);
-    },
     addToCart() {
+      // this code is used to change the route from home page to cart page with query
       this.$router.push({
         path: "/cart",
         query: {
@@ -52,7 +55,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+// use less css preprocessor
 .inputs {
   display: flex;
   justify-content: space-between;
@@ -67,27 +71,27 @@ export default {
 .button {
   text-align: right;
   margin-top: 20px;
-}
-button {
-  padding: 12px 50px;
-  width: 100%;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-}
-.btn:hover {
-  background-color: #0056b3;
+  button {
+    padding: 12px 50px;
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: #0056b3;
+  }
 }
 .active {
   cursor: not-allowed;
 }
-.selected-property{
+.selected-property {
   margin-top: 20px;
-}
-.selected-property span{
-  color: #007bff;
+  span {
+    color: #007bff;
+  }
 }
 </style>

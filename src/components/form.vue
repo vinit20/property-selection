@@ -1,4 +1,5 @@
 <template>
+  <!-- start form -->
   <form>
     <div class="form-group" v-if="$route.name != 'Cart'">
       <label for="location">Select Location:</label>
@@ -25,9 +26,17 @@
         <input type="tel" v-model="userData.phone" id="phone" name="phone" class="input-field" />
       </div>
     </div>
+    <!-- conditional renndering -->
     <button v-if="$route.name != 'Cart'" @click.prevent="submitForm" class="btn">Submit</button>
-    <button :class="{active: userData.name=='' || userData.email=='' || userData.phone==''}" :disabled="userData.name=='' || userData.email=='' || userData.phone==''" v-if="$route.name === 'Cart'" @click.prevent="submitFormWithUserData" class="btn">Submit</button>
+    <button
+      :class="{active: userData.name=='' || userData.email=='' || userData.phone==''}"
+      :disabled="userData.name=='' || userData.email=='' || userData.phone==''"
+      v-if="$route.name === 'Cart'"
+      @click.prevent="submitFormWithUserData"
+      class="btn"
+    >Submit</button>
   </form>
+  <!-- end form -->
 </template>
 
 <script>
@@ -49,6 +58,7 @@ export default {
     };
   },
   methods: {
+    // submit the for after selection of location
     submitForm() {
       this.selectedLocationData = this.stateData.filter(state => {
         return this.selectedLocation == state.name;
@@ -57,16 +67,19 @@ export default {
       this.$emit("selectedLocationData", this.selectedLocationData);
       this.$emit("modalOpen", this.modalOpen);
     },
+
+    // submit form when user fill its details
     submitFormWithUserData() {
-        this.userData = {}
-        this.formSubmit = true;
-        this.$emit('formSubmission', this.formSubmit)
+      this.userData = {};
+      this.formSubmit = true;
+      this.$emit("formSubmission", this.formSubmit);
     }
   }
 };
 </script>
 
-<style scoped>
+<style lang='less' scoped>
+// use less css preprocessor
 input {
   width: 100%;
   padding: 12px;
@@ -79,15 +92,14 @@ input {
 
 .form-group {
   margin-bottom: 20px;
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
 }
-.form-group-mt{
-    margin-top: 16px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+.form-group-mt {
+  margin-top: 16px;
 }
 
 .select-dropdown {
@@ -97,12 +109,11 @@ input {
   border-radius: 4px;
   font-size: 16px;
   background-color: #fff; /* Set background color */
-}
-
-.select-dropdown:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  .select-dropdown:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
 }
 
 .btn {
@@ -115,15 +126,13 @@ input {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .btn:hover {
   background-color: #0056b3;
 }
-.btn{
-  margin-top: 20px;
-}
-.active{
+.active {
   cursor: not-allowed;
 }
 </style>

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LocationSelection from '../pages/LocationSelection.vue';
 import Cart from '../pages/CartPage.vue';
 
+// routes setup
 const routes = [
   {
     path: '/',
