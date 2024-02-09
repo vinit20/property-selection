@@ -26,7 +26,7 @@
       </div>
     </div>
     <button v-if="$route.name != 'Cart'" @click.prevent="submitForm" class="btn">Submit</button>
-    <button v-if="$route.name === 'Cart'" @click.prevent="submitFormWithUserData" class="btn">Submit</button>
+    <button :class="{active: userData.name=='' || userData.email=='' || userData.phone==''}" :disabled="userData.name=='' || userData.email=='' || userData.phone==''" v-if="$route.name === 'Cart'" @click.prevent="submitFormWithUserData" class="btn">Submit</button>
   </form>
 </template>
 
@@ -122,5 +122,11 @@ input {
 
 .btn:hover {
   background-color: #0056b3;
+}
+.btn{
+  margin-top: 20px;
+}
+.active{
+  cursor: not-allowed;
 }
 </style>

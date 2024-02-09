@@ -21,5 +21,6 @@ export default {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 </style>

@@ -1,17 +1,19 @@
 <template>
   <div class="cart-page-main">
-    <h2>Cart Page</h2>
-    <div class="selected-data">
-      <span>
-        <b>Selected Location:</b>
-        {{ this.$route.query.selectedLocation }}
-      </span>
-      <span>
-        <b>Selected Properties:</b>
-        {{ Array.isArray($route.query.selectedProperty) ? $route.query.selectedProperty.join(', ') : $route.query.selectedProperty }}
-      </span>
+    <div class="cart-page" :class="{ 'blurred': formSubmitSuccessfully }">
+      <h2>Cart Page</h2>
+      <div class="selected-data">
+        <span>
+          <b>Selected Location:</b>
+          {{ this.$route.query.selectedLocation }}
+        </span>
+        <span>
+          <b>Selected Properties:</b>
+          {{ Array.isArray($route.query.selectedProperty) ? $route.query.selectedProperty.join(', ') : $route.query.selectedProperty }}
+        </span>
+      </div>
+      <Form @formSubmission="formSubmit" />
     </div>
-    <Form @formSubmission="formSubmit"/>
     <p class="submit-form" v-if="formSubmitSuccessfully">Form Submitted Successfully</p>
   </div>
 </template>
@@ -20,20 +22,21 @@
 import Form from "../components/form.vue";
 export default {
   name: "cart-page",
-  data(){
+  data() {
     return {
       formSubmitSuccessfully: false
-    }
+    };
   },
   components: {
     Form
   },
   methods: {
-    formSubmit(value){
-      this.formSubmitSuccessfully = value
+    formSubmit(value) {
+      this.formSubmitSuccessfully = value;
       setTimeout(() => {
-        this.formSubmitSuccessfully = false
-      }, 5000);
+        this.formSubmitSuccessfully = false;
+        this.$router.push("/");
+      }, 2000);
     }
   }
 };
@@ -43,12 +46,13 @@ export default {
 .cart-page-main {
   width: 30%;
   background-color: #fff;
-  padding: 60px;
+  padding: 40px 60px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-size: 20px;
+  position: relative;
 }
-h2{
+h2 {
   text-align: center;
   margin-bottom: 60px;
 }
@@ -59,14 +63,39 @@ h2{
 .selected-data span {
   margin-bottom: 10px;
 }
-.submit-form{
-  color: green;
+.submit-form {
+  background: green;
+  color: #fff;
+  text-align: center;
+  padding: 40px 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeInOut 2s ease infinite alternate;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.blurred {
+  filter: blur(1px); /* Adjust the blur amount as needed */
+  pointer-events: none; /* Prevent clicking on blurred elements */
 }
 
 @media (max-width: 600px) {
- .cart-page-main{
-  width: auto;
-  padding: 60px;
- }
+  .cart-page-main {
+    width: auto;
+    padding: 20px;
+  }
+  .submit-form {
+    width: 70%;
+    padding: 30px;
+  }
 }
 </style>

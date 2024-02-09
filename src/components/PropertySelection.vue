@@ -14,9 +14,14 @@
           </div>
         </div>
       </div>
+      <div v-if="selectProperty.length" class="selected-property">Selected Properties: <span><b>{{ selectProperty.join(', ') }}</b></span></div>
     </div>
     <div class="button" v-if="selectedLocation.length">
-      <button :class="{active: !selectProperty.length}" :disabled="!selectProperty.length" @click="addToCart">Add to cart</button>
+      <button
+        :class="{active: !selectProperty.length}"
+        :disabled="!selectProperty.length"
+        @click="addToCart"
+      >Add to cart</button>
     </div>
   </div>
 </template>
@@ -34,8 +39,14 @@ export default {
     propertySelect() {
       console.log(this.selectProperty);
     },
-    addToCart(){
-        this.$router.push({ path: '/cart', query: { selectedLocation: this.selectedLocation[0].name, selectedProperty: this.selectProperty } });
+    addToCart() {
+      this.$router.push({
+        path: "/cart",
+        query: {
+          selectedLocation: this.selectedLocation[0].name,
+          selectedProperty: this.selectProperty
+        }
+      });
     }
   }
 };
@@ -70,7 +81,13 @@ button {
 .btn:hover {
   background-color: #0056b3;
 }
-.active{
-    cursor: not-allowed;
+.active {
+  cursor: not-allowed;
+}
+.selected-property{
+  margin-top: 20px;
+}
+.selected-property span{
+  color: #007bff;
 }
 </style>

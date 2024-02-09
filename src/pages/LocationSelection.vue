@@ -1,5 +1,6 @@
 <template>
   <div class="form-container">
+    <h2>OMKATECH ASSIGNMENT</h2>
     <Form :stateData="stateData" @selectedLocationData="selectLocationData" @modalOpen="modalOpen" />
     <modal :isOpen="isModalOpen" @close="closeModal" :selectedLocation="selectedLocation">
       <property-selection :selectedLocation="selectedLocation" />
@@ -11,6 +12,7 @@
 import Modal from "../components/Modal.vue";
 import PropertySelection from "../components/PropertySelection.vue";
 import Form from "../components/form.vue";
+import STATE_DATA from "../utils/state-data.json";
 export default {
   name: "location-selection",
   components: {
@@ -22,28 +24,7 @@ export default {
     return {
       selectedLocation: [],
       isModalOpen: false,
-      stateData: [
-        {
-          name: "New Delhi",
-          properties: [
-            "delhi-property-1",
-            "delhi-property-2",
-            "delhi-property-3"
-          ]
-        },
-        {
-          name: "Banglore",
-          properties: [
-            "banglore-property-1",
-            "banglore-property-2",
-            "banglore-property-3"
-          ]
-        },
-        {
-          name: "Pune",
-          properties: ["pune-property-1", "pune-property-2", "pune-property-3"]
-        }
-      ]
+      stateData: STATE_DATA
     };
   },
   methods: {
@@ -62,17 +43,23 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
 .form-container {
   width: 30%;
   background-color: #fff;
-  padding: 60px;
+  padding: 30px 60px 60px 60px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-size: 20px;
 }
 @media (max-width: 767px) {
-  .form-container{
-    width: 60%;
+  .form-container {
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
   }
 }
 </style>
